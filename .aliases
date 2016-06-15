@@ -1,0 +1,22 @@
+# some aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -lah'
+alias sm='sudo mc'
+
+# php composer
+alias c='composer.phar'
+alias composer='composer.phar'
+
+# sublimes
+alias e='subl'
+alias se='sudo subl'
+
+alias ubrc='source ~/.bashrc'
+alias ea='e ~/.aliases'
+alias ef='e ~/.functions'
+
+# GIT
+alias gc='git checkout'
+# SHOW AVAILABLE GIT REPOS
+alias gr='ssh $GIT_HOST -p $GIT_PORT'

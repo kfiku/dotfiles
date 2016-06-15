@@ -1,0 +1,81 @@
+# Getting running containers names
+d_n () {
+  sudo docker ps | awk '{if (NR!=1) {print $NF}}' | sort
+}
+
+# Getting running containers names and ips
+d_ip () {
+  for id in $(sudo docker ps -q)
+  do
+    name=$(sudo docker inspect --format '{{ .Name }}' $id | grep -ohE "[a-z0-9_]+")
+    ip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $id)
+    printf "%-15s %-40s %-20s\n" $id $name $ip
+  done
+}
+
+# Inspect id
+d_i () {
+  sudo docker inspect $1
+}
+# Exec id
+d_e () {
+  sudo docker exec "$@"
+}
+
+# Go to bash of container id
+d_b () {
+  sudo docker exec -it $1 bash
+}
+
+# Reload nginx in docker
+d_ngx_r () {
+  sudo docker exec $1 nginx -s reload
+}
+
+# Remove container 
+d_rm () {
+  sudo docker rm -f $1
+}
+
+
+
+# HELPER to get autocompete of docker ids
+_docker_bash ()
+{
+  local cur
+
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  commandline=${COMP_LINE}
+  commandlineArr=(${commandline})
+  arg1=${commandlineArr[1]}
+  arg2=${commandlineArr[2]}
+  
+  nrOfArgs=$(grep -o " " <<< "$commandline" | wc -l)
+  
+  if [[ $nrOfArgs = 1 ]]; then
+    # IF WE HAVE ONLY ONE ARGUMENT
+    case "$cur" in
+      *)
+      COMPREPLY=( $( compgen -W "$(d_n)" -- $cur ) );;
+    esac
+  else
+    last="${cur##*/}"
+    dir=$(echo $cur | sed -e 's,'"$last"'$,,g')
+    
+    files=""
+    for di in $(sudo docker exec $arg1 ls -p $dir)
+    do
+      files=$files" $dir$di"
+    done
+    
+    case "$cur" in
+      *)
+      COMPREPLY=( $( compgen -W "$files" -- $cur ) );;
+    esac
+  fi
+
+  return 0
+}
+complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm
+
