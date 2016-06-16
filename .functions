@@ -42,7 +42,7 @@ function f() {
 
 # Clone git repos from local git
 function clone() {
-    git clone $GIT_HOST/$1 $2
+    git clone $GIT_URL/$1 $2
 }
 
 # refresh nginx and php fpm
