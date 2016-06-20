@@ -79,7 +79,11 @@ set_prompts() {
         userhost+="${orange}$HOSTNAME "
         userhost+="${white}in"
 
-        if [ $USER != "$default_username" ]; then echo $userhost ""; fi
+        if [ $USER != "$default_username" ]; then 
+            echo $userhost ""; 
+        else
+            echo $HOSTNAME ""; 
+        fi
     }
 
 
