@@ -40,11 +40,6 @@ function f() {
     find . -name "$1" 2>&1 | grep -v 'Permission denied'
 }
 
-# Clone git repos from local git
-function clone() {
-    git clone $GIT_URL/$1 $2
-}
-
 # refresh nginx and php fpm
 function r() {
     sudo service nginx restart
@@ -107,6 +102,29 @@ function gs() {
     cd $currentDir
 }
 
+# git pull for all gits inside 
+function gp() {
+    if [[ $1 ]]; then
+        cd $1
+    fi
+    
+    if [[ ! $2 ]]; then
+        2="."
+    fi
+    
+    currentDir=$(echo $PWD)
+    git pull
+    
+    for D in `find $2 -type d -name .git 2>/dev/null`
+    do
+        echo "git pulling $D"
+        cd $currentDir/$D/..
+        git pull
+    done
+    
+    cd $currentDir
+}
+
 function json() {
     curl -sb -H "Accept: application/json" $1 | underscore print --color
 }
@@ -114,3 +132,34 @@ function json() {
 function t() {
     tree -L ${1:-1}
 }
+
+# Clone git repos from local git
+function clone() {
+    git clone $GIT_URL/$1 $2
+}
+
+# HELPER to get autocompete of clone ids
+_git_clone ()
+{
+  local cur
+
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  commandline=${COMP_LINE}
+  commandlineArr=(${commandline})
+  arg1=${commandlineArr[1]}
+  
+  nrOfArgs=$(grep -o " " <<< "$commandline" | wc -l)
+  
+  if [[ $nrOfArgs = 1 ]]; then
+    # IF WE HAVE ONLY ONE ARGUMENT
+    case "$cur" in
+      *)
+      COMPREPLY=( $( compgen -W "$(gr | awk '{print $NF}')" -- $cur ) );;
+    esac
+  fi
+
+  return 0
+}
+complete -F _git_clone -o nospace clone
+

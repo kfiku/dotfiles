@@ -12,11 +12,11 @@ alias composer='composer.phar'
 alias e='subl'
 alias se='sudo subl'
 
-alias ubrc='source ~/.bashrc'
-alias ea='e ~/.aliases'
-alias ef='e ~/.functions'
+alias ubrc='source ~/dotfiles/.bashrc'
+alias ea='e ~/dotfiles/.aliases'
+alias ef='e ~/dotfiles/.functions'
 
 # GIT
 alias gc='git checkout'
 # SHOW AVAILABLE GIT REPOS
-alias gr='ssh $GIT_HOST -p $GIT_PORT'
+alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none'
