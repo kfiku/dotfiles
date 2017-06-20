@@ -8,7 +8,7 @@ d_ip () {
   for id in $(sudo docker ps -q)
   do
     name=$(sudo docker inspect --format '{{ .Name }}' $id | grep -ohE "[a-z0-9_]+")
-    ip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $id)
+    ip=$(sudo docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $id)
     printf "%-15s %-40s %-20s\n" $id $name $ip
   done
 }
