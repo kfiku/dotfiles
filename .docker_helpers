@@ -1,40 +1,40 @@
 # Getting running containers names
 d_n () {
-  sudo docker ps | awk '{if (NR!=1) {print $NF}}' | sort
+  docker ps | awk '{if (NR!=1) {print $NF}}' | sort
 }
 
 # Getting running containers names and ips
 d_ip () {
-  for id in $(sudo docker ps -q)
+  for id in $(docker ps -q)
   do
-    name=$(sudo docker inspect --format '{{ .Name }}' $id | grep -ohE "[a-z0-9_]+")
-    ip=$(sudo docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $id)
+    name=$(docker inspect --format '{{ .Name }}' $id | grep -ohE "[a-z0-9_]+")
+    ip=$(docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $id)
     printf "%-15s %-40s %-20s\n" $id $name $ip
   done
 }
 
 # Inspect id
 d_i () {
-  sudo docker inspect $1
+  docker inspect $1
 }
 # Exec id
 d_e () {
-  sudo docker exec "$@"
+  docker exec "$@"
 }
 
 # Go to bash of container id
 d_b () {
-  sudo docker exec -it $1 bash
+  docker exec -it $1 bash || docker exec -it $1 sh
 }
 
 # Reload nginx in docker
 d_ngx_r () {
-  sudo docker exec $1 nginx -s reload
+  docker exec $1 nginx -s reload
 }
 
 # Remove container 
 d_rm () {
-  sudo docker rm -f $1
+  docker rm -f $1
 }
 
 
@@ -64,7 +64,7 @@ _docker_bash ()
     dir=$(echo $cur | sed -e 's,'"$last"'$,,g')
     
     files=""
-    for di in $(sudo docker exec $arg1 ls -p $dir)
+    for di in $(docker exec $arg1 ls -p $dir)
     do
       files=$files" $dir$di"
     done
