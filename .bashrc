@@ -105,7 +105,12 @@ if [[ -e $dir/.vars_private ]]; then
     source $dir/.vars_private
 fi
 
-source $dir/.prompt
+# source $dir/.prompt
+GIT_PROMPT_ONLY_IN_REPO=0
+GIT_PROMPT_END_USER=" \n${White}${ResetColor}$ ";
+GIT_PROMPT_END_ROOT=" \n${White}${ResetColor}# "
+source ~/.bash-git-prompt/gitprompt.sh
+
 source $dir/.functions
 source $dir/.aliases
 source $dir/.docker_helpers
@@ -117,6 +122,3 @@ fi
 if [[ -e $dir/.functions_private ]]; then
     source $dir/.functions_private
 fi
-
-export NVM_DIR="/home/grzegorz/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

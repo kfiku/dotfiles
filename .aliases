@@ -14,7 +14,10 @@ alias se='sudo subl'
 
 alias ubrc='source ~/dotfiles/.bashrc'
 alias ea='e ~/dotfiles/.aliases'
+alias eap='e ~/dotfiles/.aliases_private'
 alias ef='e ~/dotfiles/.functions'
+alias ec='e ~/.ssh/config'
+alias en='e /etc/nginx/conf.d/casino.conf'
 
 # GIT
 alias gc='git checkout'
