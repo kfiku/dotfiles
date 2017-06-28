@@ -5,11 +5,11 @@ d_n () {
 
 # Getting running containers names and ips
 d_ip () {
-  for id in $(docker ps -q)
+  for id in $(d_n)
   do
-    name=$(docker inspect --format '{{ .Name }}' $id | grep -ohE "[a-z0-9_]+")
+    name=$(docker inspect --format '{{ .Name }}' $id)
     ip=$(docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $id)
-    printf "%-15s %-40s %-20s\n" $id $name $ip
+    printf "%-40s %-20s\n" $id $ip
   done
 }
 
