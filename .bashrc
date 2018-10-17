@@ -106,10 +106,10 @@ if [[ -e $dir/.vars_private ]]; then
 fi
 
 # source $dir/.prompt
-GIT_PROMPT_ONLY_IN_REPO=0
-GIT_PROMPT_END_USER=" \n${White}${ResetColor}$ ";
-GIT_PROMPT_END_ROOT=" \n${White}${ResetColor}# "
-source ~/.bash-git-prompt/gitprompt.sh
+# GIT_PROMPT_ONLY_IN_REPO=0
+# GIT_PROMPT_END_USER=" \n${White}${ResetColor}$ ";
+# GIT_PROMPT_END_ROOT=" \n${White}${ResetColor}# "
+# source ~/.bash-git-prompt/gitprompt.sh
 
 source $dir/.functions
 source $dir/.aliases
