@@ -5,8 +5,8 @@ alias l='ls -lah'
 alias sm='sudo mc'
 
 # php composer
-alias c='composer.phar'
-alias composer='composer.phar'
+alias c='composer'
+alias s='php app/console'
 
 # sublimes
 alias e='subl'
@@ -17,9 +17,15 @@ alias ea='e ~/dotfiles/.aliases'
 alias eap='e ~/dotfiles/.aliases_private'
 alias ef='e ~/dotfiles/.functions'
 alias ec='e ~/.ssh/config'
-alias en='e /etc/nginx/conf.d/casino.conf'
+alias eh='e /etc/hosts'
+
+alias r='sudo service nginx restart && (sudo mkdir /run/php || true) && sudo service php7.1-fpm restart'
 
 # GIT
 alias gc='git checkout'
-# SHOW AVAILABLE GIT REPOS
-alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none'
+alias gcm='git checkout master'
+alias gcm='git checkout master'
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias gpm='git pull origin master' # merge with master
+alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none' # SHOW AVAILABLE GIT REPOS
