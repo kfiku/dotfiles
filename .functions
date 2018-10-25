@@ -125,17 +125,19 @@ function gp() {
     cd $currentDir
 }
 
-function json() {
-    curl -sb -H "Accept: application/json" $1 | underscore print --color
-}
-
 function t() {
-    tree -L ${1:-1}
+    tree -L "${1:-1}"
 }
 
 # Clone git repos from local git
 function clone() {
-    git clone $GIT_URL/$1 $2
+    git clone "$GIT_URL"/"$1" "$2"
+}
+
+function gcr() {
+    # checkout to remote branch
+    echo git checkout -b "$1" origin/"$1"
+    git checkout -b "$1" origin/"$1"
 }
 
 # HELPER to get autocompete of clone ids

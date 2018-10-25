@@ -105,7 +105,7 @@ if [[ -e $dir/.vars_private ]]; then
     source $dir/.vars_private
 fi
 
-# source $dir/.prompt
+source $dir/.prompt
 # GIT_PROMPT_ONLY_IN_REPO=0
 # GIT_PROMPT_END_USER=" \n${White}${ResetColor}$ ";
 # GIT_PROMPT_END_ROOT=" \n${White}${ResetColor}# "

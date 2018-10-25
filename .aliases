@@ -24,8 +24,12 @@ alias r='sudo service nginx restart && (sudo mkdir /run/php || true) && sudo ser
 # GIT
 alias gc='git checkout'
 alias gcm='git checkout master'
-alias gcm='git checkout master'
+
 alias gp='git pull'
 alias gpr='git pull --rebase'
 alias gpm='git pull origin master' # merge with master
-alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none' # SHOW AVAILABLE GIT REPOS
+
+alias gbl='git branch -v -a' # merge with master
+
+# SHOW AVAILABLE GIT REPOS
+alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none'
