@@ -5,8 +5,8 @@ alias l='ls -lah'
 alias sm='sudo mc'
 
 # php composer
-alias c='composer.phar'
-alias composer='composer.phar'
+alias c='/usr/local/bin/composer'
+alias s='php app/console'
 
 # sublimes
 alias e='subl'
@@ -17,6 +17,7 @@ alias ea='e ~/dotfiles/.aliases'
 alias eap='e ~/dotfiles/.aliases_private'
 alias ef='e ~/dotfiles/.functions'
 alias ec='e ~/.ssh/config'
+alias eh='e /etc/hosts'
 alias en='e /etc/nginx/conf.d/casino.conf'
 
 # GIT
