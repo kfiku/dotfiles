@@ -18,8 +18,8 @@ alias eap='e ~/dotfiles/.aliases_private'
 alias ef='e ~/dotfiles/.functions'
 alias ec='e ~/.ssh/config'
 alias eh='e /etc/hosts'
-
 alias r='sudo service nginx restart && (sudo mkdir /run/php || true) && sudo service php7.1-fpm restart'
+alias en='e /etc/nginx/conf.d/casino.conf'
 
 # GIT
 alias gc='git checkout'
