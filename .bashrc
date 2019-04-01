@@ -105,20 +105,21 @@ if [[ -e $dir/.vars_private ]]; then
     source $dir/.vars_private
 fi
 
-source $dir/.prompt
+source $dir/prompt.sh
 # GIT_PROMPT_ONLY_IN_REPO=0
 # GIT_PROMPT_END_USER=" \n${White}${ResetColor}$ ";
 # GIT_PROMPT_END_ROOT=" \n${White}${ResetColor}# "
 # source ~/.bash-git-prompt/gitprompt.sh
 
-source $dir/.functions
-source $dir/.aliases
-source $dir/.docker_helpers
+source $dir/functions.sh
+source $dir/aliases.sh
+source $dir/docker_helpers.sh
+source $dir/git_helpers.sh
 
-if [[ -e $dir/.aliases_private ]]; then
-    source $dir/.aliases_private
+if [[ -e $dir/aliases_private.sh ]]; then
+    source $dir/aliases_private.sh
 fi
 
-if [[ -e $dir/.functions_private ]]; then
-    source $dir/.functions_private
+if [[ -e $dir/functions_private.sh ]]; then
+    source $dir/functions_private.sh
 fi

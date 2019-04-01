@@ -13,23 +13,10 @@ alias e='subl'
 alias se='sudo subl'
 
 alias ubrc='source ~/dotfiles/.bashrc'
-alias ea='e ~/dotfiles/.aliases'
-alias eap='e ~/dotfiles/.aliases_private'
-alias ef='e ~/dotfiles/.functions'
+alias ea='e ~/dotfiles/aliases.sh'
+alias eap='e ~/dotfiles/aliases_private.sh'
+alias ef='e ~/dotfiles/functions.sh'
 alias ec='e ~/.ssh/config'
 alias eh='e /etc/hosts'
 alias r='sudo service nginx restart && (sudo mkdir /run/php || true) && sudo service php7.1-fpm restart'
 alias en='e /etc/nginx/conf.d/casino.conf'
-
-# GIT
-alias gc='git checkout'
-alias gcm='git checkout master'
-
-alias gp='git pull'
-alias gpr='git pull --rebase'
-alias gpm='git pull origin master' # merge with master
-
-alias gbl='git branch -v -a' # merge with master
-
-# SHOW AVAILABLE GIT REPOS
-alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none'
