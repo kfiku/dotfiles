@@ -22,6 +22,13 @@ function gcr() {
     fi
 }
 
+# create branch from master
+function gbfm() {
+    git checkout master
+    git pull
+    git checkout -b "$1" master
+}
+
 # Clone git repos from local git
 function clone() {
     git clone "$GIT_URL"/"$1" "$2"
