@@ -1,7 +1,8 @@
+#!/bin/bash
+
 alias gc='git checkout'
 alias gcm='git checkout master'
 
-alias gf='git fetch --all --prune'
 alias gp='git pull'
 alias gpr='git pull --rebase'
 alias gpm='git pull origin master' # merge with master
@@ -20,6 +21,10 @@ function gcr() {
         echo git checkout -b "$1" origin/"$1"
         git checkout -b "$1" origin/"$1"
     fi
+}
+function gs() {
+    alias gf='git fetch --all --prune'
+    git remote prune origin
 }
 
 # create branch from master
