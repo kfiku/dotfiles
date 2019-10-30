@@ -23,7 +23,7 @@ function gcr() {
     fi
 }
 function gs() {
-    alias gf='git fetch --all --prune'
+    git fetch --all --prune
     git remote prune origin
 }
 
