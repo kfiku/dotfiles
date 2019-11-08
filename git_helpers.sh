@@ -22,9 +22,12 @@ function gcr() {
         git checkout -b "$1" origin/"$1"
     fi
 }
+
+# sync repo, clean old branches
 function gs() {
     git fetch --all --prune
     git remote prune origin
+    git pull
 }
 
 # create branch from master
