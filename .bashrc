@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -105,7 +107,7 @@ if [[ -e $dir/.vars_private ]]; then
     source $dir/.vars_private
 fi
 
-# source $dir/prompt.sh
+source $dir/prompt.sh
 # GIT_PROMPT_ONLY_IN_REPO=0
 # GIT_PROMPT_END_USER=" \n${White}${ResetColor}$ ";
 # GIT_PROMPT_END_ROOT=" \n${White}${ResetColor}# "
@@ -115,6 +117,7 @@ source $dir/functions.sh
 source $dir/aliases.sh
 source $dir/docker_helpers.sh
 source $dir/git_helpers.sh
+source $dir/open_project.sh
 
 if [[ -e $dir/aliases_private.sh ]]; then
     source $dir/aliases_private.sh
