@@ -117,7 +117,7 @@ source $dir/functions.sh
 source $dir/aliases.sh
 source $dir/docker_helpers.sh
 source $dir/git_helpers.sh
-source $dir/open_project.sh
+# source $dir/open_project.sh
 
 if [[ -e $dir/aliases_private.sh ]]; then
     source $dir/aliases_private.sh
