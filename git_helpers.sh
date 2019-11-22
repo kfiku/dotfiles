@@ -26,8 +26,9 @@ function gcr() {
 # sync repo, clean old branches
 function gs() {
     git fetch --all --prune
-    git remote prune origin
     git pull
+    git remote prune origin
+    for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -d $branch; done
 }
 
 # create branch from master
