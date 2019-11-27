@@ -25,11 +25,24 @@ function gcr() {
 
 # sync repo, clean old branches
 function gs() {
+    FORCE_REMOVE=$1
     git fetch --all --prune
     git pull
     git remote prune origin
     git fetch origin
-    for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -d $branch; done
+    grgb "$FORCE_REMOVE"
+}
+
+# remove gone branches
+function grgb() {
+    FORCE_REMOVE=$1
+    for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do 
+        if [ "$FORCE_REMOVE" = "1" ]; then
+            git branch -D $branch; 
+        else
+            git branch -d $branch; 
+        fi
+    done
 }
 
 # create branch from master
