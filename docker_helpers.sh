@@ -7,7 +7,7 @@ alias dl='d logs'
 alias di='d inspect'
 
 alias ds='docker service'
-alias dsn='ds ls'
+alias dsls='ds ls'
 alias dsi='ds inspect'
 alias dsl='ds logs'
 alias dsi='ds inspect'
@@ -16,6 +16,11 @@ alias dsrm='ds rm'
 
 alias dc='docker-compose'
 alias dcu='dc up'
+
+# Getting running services names
+dsn () {
+  dsls | awk '{print $2}' | sort
+}
 
 # Getting running containers names
 d_n () {
@@ -98,3 +103,27 @@ _docker_bash ()
 }
 complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl di
 
+_docker_service_bash ()
+{
+  local cur
+
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+  commandline=${COMP_LINE}
+  commandlineArr=(${commandline})
+  arg1=${commandlineArr[1]}
+  
+  nrOfArgs=$(grep -o " " <<< "$commandline" | wc -l)
+  
+  if [[ $nrOfArgs = 1 ]]; then
+    # IF WE HAVE ONLY ONE ARGUMENT
+    case "$cur" in
+      *)
+      COMPREPLY=( $( compgen -W "$(dsn)" -- $cur ) );;
+    esac
+  fi
+
+  return 0
+}
+
+complete -F _docker_bash -o nospace dsi dsl dsp dsrm
