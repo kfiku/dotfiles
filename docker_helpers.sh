@@ -126,4 +126,4 @@ _docker_service_bash ()
   return 0
 }
 
-complete -F _docker_bash -o nospace dsi dsl dsp dsrm
+complete -F _docker_service_bash -o nospace dsi dsl dsp dsrm
