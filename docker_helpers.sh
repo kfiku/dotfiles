@@ -1,3 +1,22 @@
+#!/bin/bash
+
+alias d='docker'
+alias dp='d ps'
+alias db='d_b'
+alias dl='d logs'
+alias di='d inspect'
+
+alias ds='docker service'
+alias dsn='ds ls'
+alias dsi='ds inspect'
+alias dsl='ds logs'
+alias dsi='ds inspect'
+alias dsp='ds ps'
+alias dsrm='ds rm'
+
+alias dc='docker-compose'
+alias dcu='dc up'
+
 # Getting running containers names
 d_n () {
   docker ps | awk '{if (NR!=1) {print $NF}}' | sort
@@ -77,5 +96,5 @@ _docker_bash ()
 
   return 0
 }
-complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm
+complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl di
 
