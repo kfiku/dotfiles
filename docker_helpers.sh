@@ -19,7 +19,7 @@ alias dcu='dc up'
 
 # Getting running services names
 dsn () {
-  dsls | awk '{print $2}' | sort
+  dsls | awk '{if (NR!=1) {print $2}}' | sort
 }
 
 # Getting running containers names
