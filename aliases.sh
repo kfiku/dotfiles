@@ -12,7 +12,6 @@ alias s='php app/console'
 alias e='subl'
 alias se='sudo subl'
 
-alias ubrc='source ~/dotfiles/.bashrc'
 alias ea='e ~/dotfiles/aliases.sh'
 alias eg='e ~/dotfiles/git_helpers.sh'
 alias eap='e ~/dotfiles/aliases_private.sh'

@@ -49,3 +49,8 @@ function r() {
 function t() {
     tree -L "${1:-1}"
 }
+
+function ubrc () {
+    git -C ~/dotfiles pull
+    source ~/dotfiles/.bashrc
+}
