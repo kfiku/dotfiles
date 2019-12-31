@@ -13,3 +13,4 @@ git clone git@github.com:kfiku/dotfiles.git
 echo 'source ~/dotfiles/.bashrc' >> ~/.bash_profile
 ```
 
+enjoy
