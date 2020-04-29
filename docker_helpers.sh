@@ -3,7 +3,7 @@
 alias d='docker'
 alias dp='d ps'
 alias db='d_b'
-alias dl='d logs'
+alias dl='d logs 2>&1'
 alias di='d inspect'
 
 alias ds='docker service'
@@ -56,7 +56,7 @@ d_ngx_r () {
   docker exec $1 nginx -s reload
 }
 
-# Remove container 
+# Remove container
 d_rm () {
   docker rm -f $1
 }
@@ -74,9 +74,9 @@ _docker_bash ()
   commandlineArr=(${commandline})
   arg1=${commandlineArr[1]}
   arg2=${commandlineArr[2]}
-  
+
   nrOfArgs=$(grep -o " " <<< "$commandline" | wc -l)
-  
+
   if [[ $nrOfArgs = 1 ]]; then
     # IF WE HAVE ONLY ONE ARGUMENT
     case "$cur" in
@@ -86,13 +86,13 @@ _docker_bash ()
   else
     last="${cur##*/}"
     dir=$(echo $cur | sed -e 's,'"$last"'$,,g')
-    
+
     files=""
     for di in $(docker exec $arg1 ls -p $dir)
     do
       files=$files" $dir$di"
     done
-    
+
     case "$cur" in
       *)
       COMPREPLY=( $( compgen -W "$files" -- $cur ) );;
@@ -112,9 +112,9 @@ _docker_service_bash ()
   commandline=${COMP_LINE}
   commandlineArr=(${commandline})
   arg1=${commandlineArr[1]}
-  
+
   nrOfArgs=$(grep -o " " <<< "$commandline" | wc -l)
-  
+
   if [[ $nrOfArgs = 1 ]]; then
     # IF WE HAVE ONLY ONE ARGUMENT
     case "$cur" in
