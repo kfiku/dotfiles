@@ -17,7 +17,7 @@ function gcr() {
     if git branch | grep "$1"
     then
         git checkout "$1"
-    else 
+    else
         echo git checkout -b "$1" origin/"$1"
         git checkout -b "$1" origin/"$1"
     fi
@@ -30,17 +30,18 @@ function gs() {
     git pull
     git remote prune origin
     git fetch origin
+    git fetch origin master:master
     grgb "$FORCE_REMOVE"
 }
 
 # remove gone branches
 function grgb() {
     FORCE_REMOVE=$1
-    for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do 
+    for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do
         if [ "$FORCE_REMOVE" = "1" ]; then
-            git branch -D $branch; 
+            git branch -D $branch;
         else
-            git branch -d $branch; 
+            git branch -d $branch;
         fi
     done
 }
@@ -67,9 +68,9 @@ _git_clone ()
   commandline=${COMP_LINE}
   commandlineArr=(${commandline})
   arg1=${commandlineArr[1]}
-  
+
   nrOfArgs=$(grep -o " " <<< "$commandline" | wc -l)
-  
+
   if [[ $nrOfArgs = 1 ]]; then
     # IF WE HAVE ONLY ONE ARGUMENT
     case "$cur" in
@@ -93,9 +94,9 @@ _git_checkout_remote ()
   commandline=${COMP_LINE}
   commandlineArr=(${commandline})
   arg1=${commandlineArr[1]}
-  
+
   nrOfArgs=$(grep -o " " <<< "$commandline" | wc -l)
-  
+
   if [[ $nrOfArgs = 1 ]]; then
     # IF WE HAVE ONLY ONE ARGUMENT
     case "$cur" in
