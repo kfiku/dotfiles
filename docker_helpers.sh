@@ -4,12 +4,14 @@ alias d='docker'
 alias dp='d ps'
 alias db='d_b'
 alias dl='d logs 2>&1'
+alias dt='d logs 2>&1 -f --tail 10'
 alias di='d inspect'
 
 alias ds='docker service'
 alias dsls='ds ls 2>&1'
 alias dsi='ds inspect'
 alias dsl='ds logs 2>&1'
+alias dst='ds logs 2>&1 -f --tail 10'
 alias dsi='ds inspect'
 alias dsp='ds ps'
 alias dsrm='ds rm'
@@ -101,7 +103,7 @@ _docker_bash ()
 
   return 0
 }
-complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl di
+complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl di dt
 
 _docker_service_bash ()
 {
@@ -126,4 +128,4 @@ _docker_service_bash ()
   return 0
 }
 
-complete -F _docker_service_bash -o nospace dsi dsl dsp dsrm
+complete -F _docker_service_bash -o nospace dsi dsl dst dsp dsrm
