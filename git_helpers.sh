@@ -30,7 +30,11 @@ function gs() {
     git pull
     git remote prune origin
     git fetch origin
-    git fetch origin master:master
+
+    if [[ $(git rev-parse --abbrev-ref HEAD) != "master" ]]; then
+      git fetch origin master:master
+    fi
+
     grgb "$FORCE_REMOVE"
 }
 
