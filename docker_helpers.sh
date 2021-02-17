@@ -4,8 +4,8 @@ alias d='docker'
 alias dp='d ps'
 alias db='d_b'
 alias dl='d logs 2>&1'
+alias dlt='d logs 2>&1 --tail 100000'
 alias dt='d logs 2>&1 -f --tail 10'
-alias dtt='d logs 2>&1 -f --tail 100000'
 alias di='d inspect'
 alias d_s='d stats --format "table {{.Name}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
 
@@ -105,7 +105,7 @@ _docker_bash ()
 
   return 0
 }
-complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl di dt dtt d_s
+complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl dlt di dt d_s
 
 _docker_service_bash ()
 {
