@@ -105,7 +105,7 @@ _docker_bash ()
 
   return 0
 }
-complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl di dt d_s
+complete -F _docker_bash -o nospace d_i d_e d_b d_ngx_r d_rm db dl di dt dtt d_s
 
 _docker_service_bash ()
 {
