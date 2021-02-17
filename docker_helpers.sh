@@ -5,6 +5,7 @@ alias dp='d ps'
 alias db='d_b'
 alias dl='d logs 2>&1'
 alias dt='d logs 2>&1 -f --tail 10'
+alias dtt='d logs 2>&1 -f --tail 100000'
 alias di='d inspect'
 alias d_s='d stats --format "table {{.Name}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
 

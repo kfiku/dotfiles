@@ -3,7 +3,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -lah'
 alias sm='sudo mc'
-alias cip='ifconfig eth0 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+" && ifconfig eth1 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+"'
+alias cip='ifconfig eth0 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+"; ifconfig eth1 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+"; ifconfig ppp0 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+"'
 
 # php composer
 alias c='composer'
