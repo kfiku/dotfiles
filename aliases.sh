@@ -3,15 +3,15 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -lah'
 alias sm='sudo mc'
-alias cip='ifconfig eth0 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+"; ifconfig eth1 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+"; ifconfig ppp0 | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+"'
+alias cip='ip a l | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+" | grep -vE "^(127|172)"'
 
 # php composer
 alias c='composer'
 alias s='php app/console'
 
 # sublimes
-alias e='subl'
-alias se='sudo subl'
+alias e='code'
+alias se='sudo code'
 
 alias ea='e ~/dotfiles/aliases.sh'
 alias eg='e ~/dotfiles/git_helpers.sh'

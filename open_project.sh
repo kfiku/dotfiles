@@ -9,5 +9,7 @@ if [ ! -z "$PROJECT" ]; then
    EDITOR=$(echo "$PROJECT" | awk '{print $3}')
    DIR=$(echo "$PROJECT" | awk '{print $5}')
 
+   echo "$EDITOR \"$DIR\""
+
    $EDITOR "$DIR"
 fi
