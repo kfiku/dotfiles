@@ -10,7 +10,7 @@ alias di='d inspect'
 alias d_s='d stats --format "table {{.Name}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
 
 alias ds='docker service'
-alias dsls='ds ls 2>&1'
+alias dsls='ds docker service ls --format "table {{.Replicas}}\t{{.Name}}\t{{.Ports}}\t{{.Image}}" | awk "BEGIN { actual=0; wanted=0} { split($0,replicas,\"/\"); actual+=replicas[1]; wanted+=replicas[2]; print $0 } END {print actual \"/\" wanted}"'
 alias dsi='ds inspect'
 alias dsl='ds logs 2>&1'
 alias dst='ds logs 2>&1 -f --tail 10'
