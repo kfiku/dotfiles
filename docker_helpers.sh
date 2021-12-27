@@ -27,10 +27,11 @@ dsn () {
 
 dsls () {
   SERVICES=$(docker service ls --format 'table {{.Replicas}}\t{{.Name}}\t{{.Ports}}\t{{.Image}}' | grep -v '0/0')
-  SUM=$(echo "$SERVICES" | awk 'BEGIN { actual=0; wanted=0} { split($0,replicas,"/"); actual+=replicas[1]; wanted+=replicas[2]; } END {print actual "/" wanted}')
+  REPLICAS=$(echo "$SERVICES" | awk 'BEGIN { actual=0; wanted=0} { split($0,replicas,"/"); actual+=replicas[1]; wanted+=replicas[2]; } END {print actual "/" wanted}')
+  SUM=$(echo "$SERVICES" | wc -l)
 
   echo "$SERVICES"
-  echo "$SUM"
+  echo -e "$REPLICAS\t\t\t$SUM"
   echo "$SERVICES" | grep -E '^0/.'
 }
 
