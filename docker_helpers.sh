@@ -7,7 +7,6 @@ alias dl='d logs 2>&1'
 alias dlt='d logs 2>&1 --tail 100000'
 alias dt='d logs 2>&1 -f --tail 10'
 alias di='d inspect'
-alias d_s='d stats --format "table {{.Name}}\t{{.MemUsage}}\t{{.CPUPerc}}"'
 
 alias ds='docker service'
 alias dsi='ds inspect'
@@ -25,6 +24,13 @@ dsn () {
   ds ls | awk '{if (NR!=1) {print $2}}' | sort
 }
 
+d_s () {
+  while true; do
+    docker stats --format "table {{.MemUsage}}\t{{.Name}}\t{{.CPUPerc}}" --no-stream | sort -d -r
+    echo " "
+    sleep 1
+  done
+}
 dsls () {
   SERVICES=$(docker service ls --format 'table {{.Replicas}}\t{{.Name}}\t{{.Ports}}\t{{.Image}}' | grep -v '0/0')
   REPLICAS=$(echo "$SERVICES" | awk 'BEGIN { actual=0; wanted=0} { split($0,replicas,"/"); actual+=replicas[1]; wanted+=replicas[2]; } END {print actual "/" wanted}')
