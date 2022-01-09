@@ -26,7 +26,7 @@ dsn () {
 
 d_s () {
   while true; do
-    docker stats --format "table {{.MemUsage}}\t{{.Name}}\t{{.CPUPerc}}" --no-stream | sort -d -r
+    docker stats --format "table {{.MemUsage}}\t{{.Name}}\t{{.CPUPerc}}" --no-stream | sort -h -r
     echo " "
     sleep 1
   done
