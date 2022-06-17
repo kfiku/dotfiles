@@ -126,3 +126,6 @@ fi
 if [[ -e $dir/functions_private.sh ]]; then
     source $dir/functions_private.sh
 fi
+
+export VISUAL=vim
+export EDITOR=vim
