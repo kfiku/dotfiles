@@ -23,6 +23,42 @@ function gcr() {
     fi
 }
 
+function grb() {
+  FORCE_REMOVE=$1
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+  if [[ "${CURRENT_BRANCH}" == "master" ]]; then
+    echo "Cannot reset '$CURRENT_BRANCH' branch"
+
+    return
+  fi
+
+  echo "Reseting branch '$CURRENT_BRANCH' to fix merge conflicts (branch rebased)"
+
+  if [[ -n "${FORCE_REMOVE}" ]]; then
+    echo "FORCE RESETING"
+  fi
+
+
+  git checkout master
+  git pull
+
+  if [[ -n "${FORCE_REMOVE}" ]]; then
+    git branch -D "$CURRENT_BRANCH"
+  else
+    git branch -d "$CURRENT_BRANCH"
+  fi
+
+  if git branch | grep "$CURRENT_BRANCH"; then
+    echo "Branch '$CURRENT_BRANCH' is still in the repositiory please delete if first"
+
+    return
+  fi
+
+  echo "Checkouting to fresh branch $CURRENT_BRANCH"
+  gcr "$CURRENT_BRANCH"
+}
+
 # sync repo, clean old branches
 function gs() {
     FORCE_REMOVE=$1
