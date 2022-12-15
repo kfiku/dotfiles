@@ -23,8 +23,9 @@ function gcr() {
     fi
 }
 
+# reload current branch (remove curren, get new from remote)
 function grb() {
-  FORCE_REMOVE=$1
+  FORCE_REMOVE=1
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
   if [[ "${CURRENT_BRANCH}" == "master" ]]; then
