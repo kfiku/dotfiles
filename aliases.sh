@@ -20,6 +20,7 @@ alias ef="e $DOTFILES_DIR/functions.sh"
 alias eg="e $DOTFILES_DIR/git_helpers.sh"
 alias ec="e ~/.ssh/config"
 alias eh="e /etc/hosts"
+alias ed="e $DOTFILES_DIR"
 alias r="sudo service nginx restart"
 alias en="e /etc/nginx/conf.d/casino.conf"
 
