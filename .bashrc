@@ -1,5 +1,8 @@
 #!/bin/bash
 
+export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -107,7 +110,7 @@ if [[ -e $dir/.vars_private ]]; then
     source $dir/.vars_private
 fi
 
-#source $dir/prompt.sh
+source $dir/prompt.sh
 # GIT_PROMPT_ONLY_IN_REPO=0
 # GIT_PROMPT_END_USER=" \n${White}${ResetColor}$ ";
 # GIT_PROMPT_END_ROOT=" \n${White}${ResetColor}# "

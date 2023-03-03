@@ -13,15 +13,15 @@ alias s='php app/console'
 alias e='code'
 alias se='sudo code'
 
-alias ea='e ~/dotfiles/aliases.sh'
-alias eg='e ~/dotfiles/git_helpers.sh'
-alias eap='e ~/dotfiles/aliases_private.sh'
-alias ef='e ~/dotfiles/functions.sh'
-alias eg='e ~/dotfiles/git_helpers.sh'
-alias ec='e ~/.ssh/config'
-alias eh='e /etc/hosts'
-alias r='sudo service nginx restart'
-alias en='e /etc/nginx/conf.d/casino.conf'
+alias ea="e $DOTFILES_DIR/aliases.sh"
+alias eg="e $DOTFILES_DIR/git_helpers.sh"
+alias eap="e $DOTFILES_DIR/aliases_private.sh"
+alias ef="e $DOTFILES_DIR/functions.sh"
+alias eg="e $DOTFILES_DIR/git_helpers.sh"
+alias ec="e ~/.ssh/config"
+alias eh="e /etc/hosts"
+alias r="sudo service nginx restart"
+alias en="e /etc/nginx/conf.d/casino.conf"
 
 alias ..='cd ..'
 alias ...='cd ../..'

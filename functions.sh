@@ -51,6 +51,6 @@ function t() {
 }
 
 function ubrc () {
-    git -C ~/dotfiles pull
-    source ~/dotfiles/.bashrc
+    git -C "$DOTFILES_DIR" pull
+    source "$DOTFILES_DIR"/.bashrc
 }
