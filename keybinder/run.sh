@@ -29,8 +29,7 @@ if [[ ! -z "$PROCCESS" ]]; then
   fi
 fi
 
-if [[ "$1" == "restart" ]]; then
-
+if [[ -z "$PROCCESS" || "$1" == "restart" ]]; then
   python3 "$KEYBINDER_DIR"/keybinder.py &
   echo "Keybinder started"
 fi
