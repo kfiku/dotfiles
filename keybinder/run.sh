@@ -10,26 +10,15 @@ if [[ ! -z "$PROCCESS" ]]; then
   echo "keybinder.py already working"
   echo "$PROCCESS"
 
-  if [[ "$1" == "restart" ]]; then
-    PID=$(echo "$PROCCESS" | awk '{ print $2 } ')
+  PID=$(echo "$PROCCESS" | awk '{ print $2 } ')
 
-    echo "killing keybinder on PID: $PID"
+  echo "killing keybinder on PID: $PID"
 
-    if [[ -n "$PID" ]]; then
-      kill "$PID"
-    fi
-  else
-    echo "Run with:"
-    echo ' '
-    echo '```'
-    echo "$0 restart"
-    echo '```'
-    echo ' '
-    echo "to restart keybinder"
+  if [[ -n "$PID" ]]; then
+    kill "$PID"
   fi
+
 fi
 
-if [[ -z "$PROCCESS" || "$1" == "restart" ]]; then
-  python3 "$KEYBINDER_DIR"/keybinder.py &
-  echo "Keybinder started"
-fi
+python3 "$KEYBINDER_DIR"/keybinder.py &
+echo "Keybinder started"
