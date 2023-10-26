@@ -1,2 +1,6 @@
 *_private*
 projects_map.list
+/.env
+/.idea
+node_modules
+.vscode

@@ -19,9 +19,11 @@ KeyBinder.activate({
     'Ctrl-Alt-Super-R': run("code ~/dev/reader-www/frontend"),
     'Ctrl-Alt-Super-T': run("code ~/dev/games-tester"),
     'Ctrl-Alt-Super-N': run("code ~/Dropbox/notes.md"),
+    'Ctrl-Alt-Super-E': run("code ~/Dropbox/dotfiles"),
     'Ctrl-Alt-Super-O': run("code ~/dev/online-games-statistics-server-2"),
     'Ctrl-Alt-Super-K': run("code ~/dev/casino-kiosk-2/"),
     'Ctrl-Alt-Super-L': run("code ~/dev/online-lens/"),
+    'Ctrl-Alt-Super-A': run("code ~/dev/games-provider-admin/"),
     'Ctrl-Alt-Super-Q': run("wine ~/.wine/dosdevices/c\:/Program\ Files/HeidiSQL/heidisql.exe"),
     'Ctrl-Alt-Super-P': run("~/dev/Postman/Postman"),
 }, run_thread=True)

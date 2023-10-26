@@ -6,11 +6,18 @@ alias gcm='git checkout master'
 alias gp='git pull'
 alias gpr='git pull --rebase'
 alias gpm='git pull origin master' # merge with master
+alias gbr='grb' # git brach reset
 
 alias gbl='git branch -v -a' # branches list with details
 
 # SHOW AVAILABLE GIT REPOS
 alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none'
+
+function setup() {
+  git config --global user.name "Grzegorz Klimek"
+  git config --global user.email "grzegorz@e-gaming.cz"
+  git config --global core.excludesFile /home/grzegorz/Dropbox/dotfiles/.gitignore
+}
 
 # checkout to remote branch
 function gcr() {
