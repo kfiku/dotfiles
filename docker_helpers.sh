@@ -16,6 +16,8 @@ alias dsi='ds inspect'
 alias dsp='ds ps'
 alias dsrm='ds rm'
 
+alias docker-compose='docker compose'
+
 alias dc='docker-compose'
 alias dcu='dc up'
 

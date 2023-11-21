@@ -4,3 +4,4 @@ projects_map.list
 /.idea
 node_modules
 .vscode
+*.code-workspace

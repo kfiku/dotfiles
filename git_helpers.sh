@@ -10,6 +10,10 @@ alias gbr='grb' # git brach reset
 
 alias gbl='git branch -v -a' # branches list with details
 
+alias gst='git stash --include-untracked' # git stash all
+alias gstp='git stash pop' # git stash all
+
+
 # SHOW AVAILABLE GIT REPOS
 alias gr='ssh $GIT_HOST -p $GIT_PORT 2>/dev/null | grep " R" --color=none'
 
@@ -69,7 +73,7 @@ function grb() {
 
 # sync repo, clean old branches
 function gs() {
-    FORCE_REMOVE=$1
+    FORCE_REMOVE=1
     git fetch --all --prune
     git pull
     git remote prune origin

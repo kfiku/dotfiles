@@ -24,6 +24,8 @@ KeyBinder.activate({
     'Ctrl-Alt-Super-K': run("code ~/dev/casino-kiosk-2/"),
     'Ctrl-Alt-Super-L': run("code ~/dev/online-lens/"),
     'Ctrl-Alt-Super-A': run("code ~/dev/games-provider-admin/"),
+    'Ctrl-Alt-Super-W': run("code ~/dev/wallet/"),
+    'Ctrl-Alt-Super-Y': run("code ~/dev/lobby/lobby.code-workspace"),
     'Ctrl-Alt-Super-Q': run("wine ~/.wine/dosdevices/c\:/Program\ Files/HeidiSQL/heidisql.exe"),
     'Ctrl-Alt-Super-P': run("~/dev/Postman/Postman"),
 }, run_thread=True)
