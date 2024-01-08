@@ -28,6 +28,8 @@ KeyBinder.activate({
     'Ctrl-Alt-Super-Y': run("code ~/dev/lobby/lobby.code-workspace"),
     'Ctrl-Alt-Super-Q': run("wine ~/.wine/dosdevices/c\:/Program\ Files/HeidiSQL/heidisql.exe"),
     'Ctrl-Alt-Super-P': run("~/dev/Postman/Postman"),
+    'Ctrl-Alt-Super-1': run("xdotool set_num_desktops 1"),
+    'Ctrl-Alt-Super-2': run("xdotool set_num_desktops 2"),
 }, run_thread=True)
 
 signal.pause()

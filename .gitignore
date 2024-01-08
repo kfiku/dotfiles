@@ -5,3 +5,4 @@ projects_map.list
 node_modules
 .vscode
 *.code-workspace
+coverage
