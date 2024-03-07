@@ -108,7 +108,7 @@ function gbfm() {
 # create branch from current bramch
 function gbfc() {
     git branch "$1"
-    git checkout -b "$1"
+    git checkout "$1"
 }
 
 # Clone git repos from local git
