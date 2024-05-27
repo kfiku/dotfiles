@@ -13,6 +13,7 @@ alias dsi='ds inspect'
 alias dsl='ds logs 2>&1'
 alias dst='ds logs 2>&1 -f --tail 10'
 alias dsi='ds inspect'
+alias dsps='ds ps'
 alias dsp='ds ps'
 alias dsrm='ds rm'
 
@@ -147,4 +148,4 @@ _docker_service_bash ()
   return 0
 }
 
-complete -F _docker_service_bash -o nospace dsi dsl dst dsp dsrm
+complete -F _docker_service_bash -o nospace dsi dsl dst dsp dsrm dsps
