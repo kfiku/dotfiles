@@ -86,6 +86,12 @@ function gs() {
     grgb "$FORCE_REMOVE"
 }
 
+function gss() {
+    git stash --all
+    gs
+    git stash pop
+}
+
 # remove gone branches
 function grgb() {
     FORCE_REMOVE=$1
