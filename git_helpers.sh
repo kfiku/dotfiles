@@ -86,9 +86,9 @@ function gs() {
     grgb "$FORCE_REMOVE"
 }
 
-function gss() {
-    git stash --all
-    gs
+function gspr() {
+    git stash --include-untracked
+    git pull --rebase
     git stash pop
 }
 
