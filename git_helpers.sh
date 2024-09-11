@@ -2,6 +2,7 @@
 
 alias gc='git checkout'
 alias gcm='git checkout master'
+alias gca='git commit --amend --no-edit'
 
 alias gp='git pull'
 alias gpr='git pull --rebase'
