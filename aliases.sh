@@ -1,9 +1,12 @@
+#!/bin/bash
+
 # some aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -lah'
 alias sm='sudo mc'
 alias cip='ip a l | grep -ohE "inet [0-9.]+" | grep -ohE "[0-9.]+" | grep -vE "^(127|172)"'
+alias rs='killall gnome-shell'
 
 # php composer
 alias c='composer'
