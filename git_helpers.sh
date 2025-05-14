@@ -26,6 +26,8 @@ function setup() {
 
 # checkout to remote branch
 function gcr() {
+    git fetch origin
+
     if git branch | grep "$1"
     then
         git checkout "$1"

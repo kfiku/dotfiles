@@ -21,4 +21,5 @@ if [[ ! -z "$PROCCESS" ]]; then
 fi
 
 python3 "$KEYBINDER_DIR"/keybinder.py &
+python3 "$KEYBINDER_DIR"/clipper.py &
 echo "Keybinder started"

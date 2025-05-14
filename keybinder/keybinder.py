@@ -31,6 +31,11 @@ KeyBinder.activate({
     'Ctrl-Alt-Super-Q': run("wine ~/.wine/dosdevices/c\:/Program\ Files/HeidiSQL/heidisql.exe"),
     'Ctrl-Alt-Super-P': run("/app/dev/Postman/Postman"),
     'Ctrl-Alt-Super-1': run("~/Dropbox/dotfiles/piner/run.sh"),
+
+    'Ctrl-Alt-Super-V': run("code /app/dev/github/advent-of-code"),
+
+    'Ctrl-Alt-Super-8': run("killall Bitrix24 || true; sleep 5; /opt/Bitrix24/Bitrix24 "),
+
 }, run_thread=True)
 
 signal.pause()
