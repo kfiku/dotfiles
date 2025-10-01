@@ -30,11 +30,15 @@ KeyBinder.activate({
 
     'Ctrl-Alt-Super-Q': run("wine ~/.wine/dosdevices/c\:/Program\ Files/HeidiSQL/heidisql.exe"),
     'Ctrl-Alt-Super-P': run("/app/dev/Postman/Postman"),
-    'Ctrl-Alt-Super-1': run("~/Dropbox/dotfiles/piner/run.sh"),
+    'Ctrl-Alt-Super-_': run("~/Dropbox/dotfiles/piner/run.sh"),
 
     'Ctrl-Alt-Super-V': run("code /app/dev/github/advent-of-code"),
 
     'Ctrl-Alt-Super-8': run("killall Bitrix24 || true; sleep 5; /opt/Bitrix24/Bitrix24 "),
+    'Ctrl-Alt-Super-9': run('xinput enable "AT Translated Set 2 keyboard"'),
+    'Ctrl-Alt-Super-0': run('xinput disable "AT Translated Set 2 keyboard"'),
+    'Ctrl-Alt-Super-1': run('autorandr --load dom'),
+    'Ctrl-Alt-Super-2': run('autorandr --load praca'),
 
 }, run_thread=True)
 

@@ -130,5 +130,8 @@ if [[ -e $dir/functions_private.sh ]]; then
     source $dir/functions_private.sh
 fi
 
+export SYSTEMD_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
+
+export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'

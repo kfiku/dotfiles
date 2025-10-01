@@ -17,9 +17,7 @@ alias dsps='ds ps'
 alias dsp='ds ps'
 alias dsrm='ds rm'
 
-alias docker-compose='docker compose'
-
-alias dc='docker-compose'
+alias dc='docker compose'
 alias dcu='dc up'
 
 # Getting running services names
