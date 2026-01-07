@@ -11,7 +11,7 @@ HOME_CONF="$DOT_CONF_DIR/monitors-home.conf"
 ACTIVE_CONF="$CONF_DIR/monitors.conf"
 
 # Check what’s connected
-if echo "$CONNECTED" | grep -q "DP-2" && echo "$CONNECTED" | grep -q "DP-1"; then
+if echo "$CONNECTED" | grep -q "DP-3" && echo "$CONNECTED" | grep -q "DP-1"; then
     echo "Detected office setup"
     ln -sf "$OFFICE_CONF" "$ACTIVE_CONF"
 elif echo "$CONNECTED" | grep -q "DP-1"; then

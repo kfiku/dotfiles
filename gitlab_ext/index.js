@@ -2,16 +2,25 @@
 import CDP from 'chrome-remote-interface';
 import notifier from 'node-notifier';
 import { exec } from 'node:child_process';
+import { stat } from 'node:fs/promises';
 import { promisify } from 'node:util';
 
+/**
+ * @typedef {Object} Repo
+ * @property {string} branch
+ * @property {string} group
+ * @property {string} repository
+ * @property {string} cloneUrl
+ */
 
 async function run() {
   try {
-    const {branch, repository} = await getBranchNameAndRepository()
-    console.log(branch, repository);
+    const repo = await getRepoDetails()
+    console.log(repo);
 
-    await gitCheckout(repository, branch)
-    await openInCode(repository)
+    await checkRepoExists(repo)
+    openInCode(repo)
+    await gitCheckout(repo)
 
   } catch (error) {
     notify('some error?')
@@ -25,7 +34,10 @@ async function run() {
 
 void run()
 
-async function getBranchNameAndRepository () {
+/**
+ * @returns {Promise<Repo>}
+ */
+async function getRepoDetails () {
   const client = await CDP();
   const { Target, Runtime } = client;
 
@@ -36,9 +48,10 @@ async function getBranchNameAndRepository () {
     throw notify(`no active tab`)
   }
 
+  
   const {url} = active
-  const [,,,,repository] = url.split('/')
-
+  const [,,,group,repository] = url.split('/')
+  
   if (!url.match(/https:\/\/gitlab.v1t.eu\/.*\/merge_requests\/[0-9]+/)) {
     throw notify(`Wrong url ${url}`)
   }
@@ -54,37 +67,57 @@ async function getBranchNameAndRepository () {
     throw notify(`Missing branch name in ${url}`)
   }
 
-  return {branch, repository}
+  const cloneUrl = `git@gitlab.v1t.eu:${group}/${repository}.git`
+
+  return {branch, group, repository, cloneUrl}
 }
 
 /**
- * @param {string} repo
+ * @param {Repo} repo
+ */
+async function checkRepoExists(repo) {
+  try {
+    await stat(getRepoDir(repo))
+  } catch (error) {
+    await gitClone(repo)
+  }
+}
+
+/**
+ * @param {Repo} repo
  */
 async function openInCode(repo) {
   return await cmd(`code ${getRepoDir(repo)}`)
 }
 
 /**
- * @param {string} repo
+ * @param {Repo} repo
  */
 async function getGitBranchFromDir(repo) {
   return await cmd('git symbolic-ref --short HEAD', { cwd: getRepoDir(repo) })
 }
 
 /**
- * @param {string} repo
+ * @param {Repo} repo
  */
 async function gitPull(repo) {
   return await cmd('git pull', { cwd: getRepoDir(repo) })
 }
 
 /**
- * @param {string} repo
- * @param {string} branch
+ * @param {Repo} repo
  */
-async function gitCheckout(repo, branch) {
+async function gitClone(repo) {
+  return await cmd(`git clone ${repo.cloneUrl} ${getRepoDir(repo)}`)
+}
+
+
+/**
+ * @param {Repo} repo
+ */
+async function gitCheckout(repo) {
   const dirBranch = await getGitBranchFromDir(repo)
-  const isSame = dirBranch === branch
+  const isSame = dirBranch === repo.branch
 
   
   if (isSame) {
@@ -95,7 +128,7 @@ async function gitCheckout(repo, branch) {
   
   try{
     await cmd(`git fetch --all`, { cwd: getRepoDir(repo) })
-    await cmd(`git checkout ${branch}`, { cwd: getRepoDir(repo) })
+    await cmd(`git checkout ${repo.branch}`, { cwd: getRepoDir(repo) })
   } catch(error) {
     if (error instanceof Error) {
       throw notify(error.message)
@@ -108,10 +141,10 @@ async function gitCheckout(repo, branch) {
 }
 
 /**
- * @param {string} repo
+ * @param {Repo} repo
  */
-function getRepoDir(repo) {
-  return `/home/grzegorz/dev/${repo}`;
+function getRepoDir({ group, repository }) {
+  return `/home/grzegorz/dev/${group}/${repository}`;
 }
 
 /**
