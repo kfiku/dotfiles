@@ -23,7 +23,6 @@ async function run() {
     await gitCheckout(repo)
 
   } catch (error) {
-    notify('some error?')
     // @ts-ignore
     notify(error.message)
   }
@@ -41,18 +40,19 @@ async function getRepoDetails () {
   const client = await CDP();
   const { Target, Runtime } = client;
 
+  const gitlabMrRegexp = /https:\/\/gitlab.v1t.eu\/.*\/merge_requests\/[0-9]+/
   const targets = await Target.getTargets();
-  const active = targets.targetInfos.find(t => t.type === "page" && t.attached);
+  const gitlabTabs = targets.targetInfos.filter(t => t?.url.match(gitlabMrRegexp));
+  const active = gitlabTabs[0]
 
   if(!active) {
     throw notify(`no active tab`)
   }
-
   
   const {url} = active
   const [,,,group,repository] = url.split('/')
   
-  if (!url.match(/https:\/\/gitlab.v1t.eu\/.*\/merge_requests\/[0-9]+/)) {
+  if (!url.match(gitlabMrRegexp)) {
     throw notify(`Wrong url ${url}`)
   }
   

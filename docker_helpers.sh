@@ -5,7 +5,6 @@ alias dp='d ps'
 alias db='d_b'
 alias dl='d logs 2>&1'
 alias dlt='d logs 2>&1 --tail 100000'
-alias dt='d logs 2>&1 -f --tail 10'
 alias di='d inspect'
 
 alias ds='docker service'
@@ -19,6 +18,10 @@ alias dsrm='ds rm'
 
 alias dc='docker compose'
 alias dcu='dc up'
+
+dt () {
+  tail -f "$(docker inspect --format='{{.LogPath}}' "$1")"
+}
 
 # Getting running services names
 dsn () {
