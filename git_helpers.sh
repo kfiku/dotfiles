@@ -98,7 +98,7 @@ function gspr() {
 # remove gone branches
 function grgb() {
     FORCE_REMOVE=$1
-    for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do
+    for branch in `git branch -vv | grep ': gone]'  | tr -d '+' | awk '{print $1}'`; do
         if [ "$FORCE_REMOVE" = "1" ]; then
             git branch -D $branch;
         else
