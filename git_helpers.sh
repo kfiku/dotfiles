@@ -9,6 +9,9 @@ alias gpr='git pull --rebase'
 alias gpm='git pull origin master' # merge with master
 alias gbr='grb' # git brach reset
 
+alias gw='git worktree' # 
+alias gwl='git worktree list' # 
+
 alias gbl='git branch -v -a' # branches list with details
 
 alias gst='git stash --include-untracked' # git stash all
