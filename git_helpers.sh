@@ -100,14 +100,16 @@ function gspr() {
 
 # remove gone branches
 function grgb() {
-    FORCE_REMOVE=$1
-    for branch in `git branch -vv | grep ': gone]'  | tr -d '+' | awk '{print $1}'`; do
-        if [ "$FORCE_REMOVE" = "1" ]; then
-            git branch -D $branch;
-        else
-            git branch -d $branch;
-        fi
-    done
+  for branch in `git branch -vv | grep ': gone]'  | tr -d '+' | awk '{print $1}'`; do
+    
+    worktree=$(git for-each-ref --format='%(worktreepath)' "refs/heads/$branch")
+
+    if [[ -n "$worktree" ]]; then
+      git worktree remove "$worktree" || continue
+    fi
+      
+    git branch -D $branch;
+  done
 }
 
 # create branch from master
